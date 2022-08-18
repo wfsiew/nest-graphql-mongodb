@@ -29,4 +29,12 @@ export class StudentService {
     });
     return this.studentRepository.save(student);
   }
+
+  async getManyStudents(studentIds: string[]): Promise<Student[]> {
+    return this.studentRepository.find({
+      id: {
+        $in: studentIds,
+      }
+    });
+  }
 }
